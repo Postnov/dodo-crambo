@@ -14,6 +14,7 @@
 
 <script>
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
+import { firebase } from '../main'
 
 
 var PostComponent = {
@@ -35,11 +36,7 @@ export default {
     name: 'posts',
     data() {
         return {
-            posts: [
-                { id: 1, name: 'Ой, снежинка на реснице', link: 'vk.com/postnv', author: 'Постанов' },
-                { id: 2, name: 'Любишь с шуткой в дом ввалится?', link: 'dev-postnov.ru', author: 'Даниил' },
-                { id: 3, name: 'Больше знаешь, крепче спится', link: 'beproff.ru', author: 'Игоревич' },
-            ],
+            posts: [],
             swiperOption: {
                 allowTouchMove: true,
                 simulateTouch: true,
@@ -48,6 +45,11 @@ export default {
                     prevEl: '.swiper-button-prev',
                 }
             }
+        }
+    },
+    firestore() {
+        return {
+            posts: firebase.firestore().collection('data').doc('rhymes').collection('published').orderBy('createdAt')
         }
     },
     components: {
@@ -64,7 +66,7 @@ export default {
         // current swiper instance
         // 然后你就可以使用当前上下文内的swiper对象去做你想做的事了
         //   console.log('this is current swiper instance object', this.swiper)
-        this.swiper.slideTo(3, 0, false)
+        // this.swiper.slideTo(3, 0, false)
     }
 }
 
