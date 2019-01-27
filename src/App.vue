@@ -1,8 +1,11 @@
 <template>
   <div id="app">
-    <add-post></add-post>
-    <posts></posts>
+    <button @click="view = 'add-post'">Перйти на создание</button>
+    <button @click="view = 'posts'">Перйти на все посты</button>
 
+    <transition name="slide-fade" mode="out-in">
+      <component :is="view"></component>
+    </transition>
   </div>
 </template>
 
@@ -13,7 +16,11 @@ import Posts from '@/views/Posts'
 
 export default {
   name: 'App',
-
+  data() {
+    return {
+      view: 'posts'
+    }
+  },
   components: {
     'add-post': AddPost,
     'posts': Posts
@@ -22,5 +29,16 @@ export default {
 </script>
 
 <style>
+#app {
+  overflow: hidden;
+}
 
+.slide-fade-enter-active {
+  transition: all .3s ease;
+}
+.slide-fade-enter, .slide-fade-leave-to
+/* .slide-fade-leave-active до версии 2.1.8 */ {
+  transform: translateX(10px);
+  opacity: 0;
+}
 </style>
