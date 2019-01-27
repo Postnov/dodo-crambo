@@ -1,17 +1,21 @@
 <template>
     <div>
         <div class="post-list" >
-            <post-component
-                v-for="post in posts"
-                :key="post.id"
-                :name="post.name"
-            ></post-component>
+            <swiper :options="swiperOption" ref="mySwiper">
+                <swiper-slide v-for="post in posts" :key="post.id">
+                    <post-component :name="post.name"></post-component>
+                </swiper-slide>
+            </swiper>
+
         </div>
     </div>
 </template>
 
 <script>
-var postComponent = {
+import {swiper, swiperSlide} from '../main.js'
+
+
+var PostComponent = {
     name: 'post-component',
     props: ['name'],
     template: `
@@ -35,7 +39,9 @@ export default {
         }
     },
     components: {
-        'post-component': postComponent
+        'post-component': PostComponent,
+        'swiper': swiper,
+        'swiper-slide': swiperSlide
     }
 }
 
