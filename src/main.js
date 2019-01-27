@@ -3,11 +3,9 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import { swiper, swiperSlide } from 'vue-awesome-swiper'
 
 // require styles
-import 'swiper/dist/css/swiper.css'
-
+import 'swiper/dist/css/swiper.css';
 
 
 Vue.config.productionTip = false
@@ -19,6 +17,8 @@ new Vue({
   components: { App },
   template: '<App/>'
 })
+
+
 
 
 export {swiper, swiperSlide}
