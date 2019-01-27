@@ -15,22 +15,8 @@
 <script>
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
 import { firebase } from '../main'
+import PostComponent from '@/views/Post-component.vue';
 
-
-var PostComponent = {
-    name: 'post-component',
-    props: ['post'],
-    template: `
-        <div class="post">
-            <p>{{ post.name }}</p>
-            <p>А доставка - Додо пицца</p>
-            <footer>
-                <a target="_blank" :href="post.link">{{post.author}}</a>
-            </footer>
-        </div>
-    `,
-
-}
 
 export default {
     name: 'posts',

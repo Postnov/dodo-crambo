@@ -42,7 +42,8 @@ export default {
                 id: this.makeid(),
                 author: this.author,
                 name: this.name,
-                link: this.link
+                link: this.link,
+                rating: 0
             });
 
             this.name = '';
