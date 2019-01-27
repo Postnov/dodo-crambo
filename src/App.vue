@@ -3,7 +3,6 @@
     <button @click="view = 'add-post'">Перйти на создание</button>
     <button @click="view = 'posts'">Перйти на все посты</button>
 
-	<!-- TODO: Проверить как keep-alive влияет на обновление компонента posts  -->
 	<transition name="slide-fade" mode="out-in">
 		<keep-alive>
 			<component :is="view"></component>
