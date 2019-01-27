@@ -3,7 +3,7 @@
         <div class="post-list" >
             <swiper :options="swiperOption" ref="mySwiper">
                 <swiper-slide v-for="post in posts" :key="post.id">
-                    <post-component :name="post.name"></post-component>
+                    <post-component :post="post"></post-component>
                 </swiper-slide>
             </swiper>
         </div>
@@ -16,11 +16,14 @@ import { swiper, swiperSlide } from 'vue-awesome-swiper'
 
 var PostComponent = {
     name: 'post-component',
-    props: ['name'],
+    props: ['post'],
     template: `
         <div class="post">
-            <p>{{ name }}</p>
+            <p>{{ post.name }}</p>
             <p>А доставка - Додо пицца</p>
+            <footer>
+                <a :href="post.link">{{post.author}}</a>
+            </footer>
         </div>
     `,
 
@@ -31,9 +34,9 @@ export default {
     data() {
         return {
             posts: [
-                { id: 1, name: 'Ой, снежинка на реснице' },
-                { id: 2, name: 'Любишь с шуткой в дом ввалится?' },
-                { id: 3, name: 'Больше знаешь, крепче спится' },
+                { id: 1, name: 'Ой, снежинка на реснице', link: 'vk.com/postnv', author: 'Постанов' },
+                { id: 2, name: 'Любишь с шуткой в дом ввалится?', link: 'dev-postnov.ru', author: 'Даниил' },
+                { id: 3, name: 'Больше знаешь, крепче спится', link: 'beproff.ru', author: 'Игоревич' },
             ],
             swiperOption: {
                 // some swiper options/callbacks
