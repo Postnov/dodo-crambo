@@ -6,6 +6,7 @@ import router from './router'
 
 // require styles
 import 'swiper/dist/css/swiper.css';
+import '@/assets/main.css';
 
 
 Vue.config.productionTip = false
