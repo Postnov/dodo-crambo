@@ -3,10 +3,19 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import VueFire from 'vuefire'
+import firebaseConfig from '@/configsData/firebase'
+import firebase from 'firebase/app'
+import 'firebase/firestore'
 
 // require styles
 import 'swiper/dist/css/swiper.css';
 import '@/assets/main.css';
+
+
+Vue.use(VueFire)
+
+firebase.initializeApp(firebaseConfig)
 
 
 Vue.config.productionTip = false
