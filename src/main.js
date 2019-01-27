@@ -30,5 +30,4 @@ new Vue({
 
 
 
-
-export {swiper, swiperSlide}
+export {firebase}
