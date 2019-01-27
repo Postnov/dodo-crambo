@@ -1,31 +1,37 @@
 <template>
-  <div id="app">
-    <button @click="view = 'add-post'">Перйти на создание</button>
-    <button @click="view = 'posts'">Перйти на все посты</button>
+	<div id="app">
+		<button @click="view = 'add-post'">Перйти на создание</button>
+		<button @click="view = 'posts'">Перйти на все посты</button>
 
-	<transition name="slide-fade" mode="out-in">
-		<keep-alive>
+
+		<post-list></post-list>
+
+
+		<transition name="slide-fade" mode="out-in">
+			<keep-alive>
 			<component :is="view"></component>
-		</keep-alive>
-	</transition>
+			</keep-alive>
+		</transition>
 	</div>
 </template>
 
 <script>
 import AddPost from '@/views/Add-post';
 import Posts from '@/views/Posts'
+import PostList from '@/views/Post-list'
 
 
 export default {
   name: 'App',
   data() {
-    return {
-      view: 'posts'
-    }
+	return {
+	  view: 'posts'
+	}
   },
   components: {
-    'add-post': AddPost,
-    'posts': Posts
+	'add-post': AddPost,
+	'posts': Posts,
+	'post-list': PostList
   }
 }
 </script>
