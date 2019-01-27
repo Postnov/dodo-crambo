@@ -5,6 +5,8 @@
                 <swiper-slide v-for="post in posts" :key="post.id">
                     <post-component :post="post"></post-component>
                 </swiper-slide>
+                <div class="swiper-button-prev" slot="button-prev"></div>
+                <div class="swiper-button-next" slot="button-next"></div>
             </swiper>
         </div>
     </div>
@@ -22,7 +24,7 @@ var PostComponent = {
             <p>{{ post.name }}</p>
             <p>А доставка - Додо пицца</p>
             <footer>
-                <a :href="post.link">{{post.author}}</a>
+                <a target="_blank" :href="post.link">{{post.author}}</a>
             </footer>
         </div>
     `,
@@ -39,9 +41,12 @@ export default {
                 { id: 3, name: 'Больше знаешь, крепче спится', link: 'beproff.ru', author: 'Игоревич' },
             ],
             swiperOption: {
-                // some swiper options/callbacks
-                // 所有的参数同 swiper 官方 api 参数
-                // ...
+                allowTouchMove: true,
+                simulateTouch: true,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                }
             }
         }
     },
