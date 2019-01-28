@@ -1,12 +1,11 @@
 <template>
-    <div>
-        <h1>Добавить рифму</h1>
-        <form @submit.prevent="sendRhyme()">
-            <input type="text" v-model="name" placeholder="Название рифмы">
-            <input type="text" v-model="author" placeholder="Ваше имя">
-            <input type="text" v-model="link" placeholder="Ссылка на страницу вк">
-
-            <button type="submit">Отправить</button>
+    <div class="add-post">
+        <h1 class="add-post__title">Добавить рифму</h1>
+        <form @submit.prevent="sendRhyme()" class="add-post__form">
+            <input class="add-post__input" type="text" v-model="name" placeholder="Название рифмы">
+            <input class="add-post__input" type="text" v-model="author" placeholder="Ваше имя">
+            <input class="add-post__input" type="text" v-model="link" placeholder="Ссылка на страницу вк">
+            <button class="add-post__btn" type="submit">Отправить</button>
         </form>
 
     </div>
