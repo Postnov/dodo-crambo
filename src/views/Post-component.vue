@@ -14,9 +14,11 @@
 
                 </button>
             </div>
-            <div>
+            <div class="post__author">
                 <p v-if="post.author">
-                    Автор: <a target="_blank" :href="post.link">{{post.author}}</a>
+                    Автор:
+                    <a v-if="post.link" target="_blank" :href="post.link">{{post.author}}</a>
+                    <span v-else>{{post.author}}</span>
                 </p>
                 <p v-else>
                     Автор: Неизвестен
