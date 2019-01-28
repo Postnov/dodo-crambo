@@ -24,7 +24,7 @@ export default {
     },
     firestore() {
         return {
-            posts: firebase.firestore().collection('data').doc('rhymes').collection('published').orderBy('rating', 'desc')
+            posts: firebase.firestore().collection('data').doc('rhymes').collection('published').orderBy('createdAt')
         }
     },
     methods: {
