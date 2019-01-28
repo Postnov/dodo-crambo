@@ -1,8 +1,15 @@
 <template>
-	<div id="app">
-		<button @click="view = 'post-list'">Показать все рифмы</button>
-		<button @click="view = 'add-post'">Перйти на создание</button>
-		<button @click="view = 'posts'">Перйти на все посты</button>
+	<div id="app" class="page">
+		<header class="page__header header">
+			<div class="header__left">
+				<p class="logo-text" @click="view = 'posts'">Додо Рифма</p>
+			</div>
+			<div class="header__right">
+					<button @click="view = 'post-list'">Все рифмы </button>
+					<button @click="view = 'add-post'">Создать свою</button>
+			</div>
+		</header>
+
 
 
 		<div class="app-content">
