@@ -7,6 +7,7 @@ import VueFire from 'vuefire'
 import firebaseConfig from '@/configsData/firebase'
 import firebase from 'firebase/app'
 import 'firebase/firestore'
+import VueMasonry from 'vue-masonry-css'
 
 // require styles
 import 'swiper/dist/css/swiper.css';
@@ -14,6 +15,7 @@ import '@/assets/main.css';
 
 
 Vue.use(VueFire)
+Vue.use(VueMasonry)
 
 firebase.initializeApp(firebaseConfig)
 
@@ -30,4 +32,4 @@ new Vue({
 
 
 
-export {firebase}
+export {firebase, VueMasonry}

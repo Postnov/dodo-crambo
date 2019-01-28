@@ -1,7 +1,13 @@
 <template>
-    <div class="post-list">
+
+    <masonry
+        class="post-list"
+        :cols="{default: 3, 1000: 2, 400: 1}"
+        :gutter="{default: '20px', 700: '15px'}"
+    >
         <post-component v-for="post in posts" :post="post" :key="post.id"  v-on:incrate="updateInc"></post-component>
-    </div>
+    </masonry>
+
 </template>
 
 <script>
