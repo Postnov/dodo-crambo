@@ -1,9 +1,9 @@
 <template>
     <div>
-        <div class="post-list" >
-            <swiper :options="swiperOption" ref="mySwiper">
-                <swiper-slide v-for="post in posts" :key="post.id">
-                    <post-component :post="post"></post-component>
+        <div class="post-slider" >
+            <swiper :options="swiperOption" ref="mySwiper" >
+                <swiper-slide v-for="post in posts" :key="post.id" >
+                    <post-component class="post-slide" :post="post" v-on:incrate="updateInc"></post-component>
                 </swiper-slide>
                 <div class="swiper-button-prev" slot="button-prev"></div>
                 <div class="swiper-button-next" slot="button-next"></div>
@@ -22,10 +22,15 @@ export default {
     name: 'posts',
     data() {
         return {
+            msg: 0,
             posts: [],
             swiperOption: {
                 allowTouchMove: true,
                 simulateTouch: true,
+                speed: 500,
+                autoplay: {
+                    delay: 5000,
+                },
                 navigation: {
                     nextEl: '.swiper-button-next',
                     prevEl: '.swiper-button-prev',
@@ -36,6 +41,15 @@ export default {
     firestore() {
         return {
             posts: firebase.firestore().collection('data').doc('rhymes').collection('published').orderBy('createdAt')
+        }
+    },
+    methods: {
+        updateInc(rating, id) {
+            rating++;
+
+            firebase.firestore().collection('data').doc('rhymes').collection('published').doc(id).set({
+                rating: rating
+            }, {merge: true})
         }
     },
     components: {
@@ -53,6 +67,10 @@ export default {
         // 然后你就可以使用当前上下文内的swiper对象去做你想做的事了
         //   console.log('this is current swiper instance object', this.swiper)
         // this.swiper.slideTo(3, 0, false)
+
+
+    },
+    created() {
     }
 }
 

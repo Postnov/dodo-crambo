@@ -1,6 +1,6 @@
 <template>
-    <div class="post-list" >
-        <post-component v-for="post in posts" :post="post" :key="post.id"></post-component>
+    <div class="post-list">
+        <post-component v-for="post in posts" :post="post" :key="post.id"  v-on:incrate="updateInc"></post-component>
     </div>
 </template>
 
@@ -8,22 +8,6 @@
 import { firebase } from '../main'
 import PostComponent from '@/views/Post-component'
 
-
-// var PostComponent = {
-//     name: 'post-component',
-//     props: ['post'],
-//     template: `
-//         <div class="post-item">
-//             <p>{{ post.name }}</p>
-//             <p>А доставка - Додо пицца</p>
-//             <footer>
-//                 <a target="_blank" :href="post.link">{{post.author}}</a>
-//                 <button>Лайк</button>
-//                 <button>{{ post.rating }}<button>
-//             </footer>
-//         </div>
-//     `,
-// }
 
 export default {
     name: 'post-list',
@@ -35,6 +19,15 @@ export default {
     firestore() {
         return {
             posts: firebase.firestore().collection('data').doc('rhymes').collection('published').orderBy('createdAt')
+        }
+    },
+    methods: {
+        updateInc(rating, id) {
+            rating++;
+
+            firebase.firestore().collection('data').doc('rhymes').collection('published').doc(id).set({
+                rating: rating
+            }, {merge: true})
         }
     },
     components: {
