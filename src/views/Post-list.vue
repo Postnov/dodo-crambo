@@ -6,24 +6,24 @@
 
 <script>
 import { firebase } from '../main'
+import PostComponent from '@/views/Post-component'
 
 
-var PostComponent = {
-    name: 'post-component',
-    props: ['post'],
-    template: `
-        <div class="post-item">
-            <p>{{ post.name }}</p>
-            <p>А доставка - Додо пицца</p>
-            <footer>
-                <a target="_blank" :href="post.link">{{post.author}}</a>
-                <button>Лайк</button>
-                <button>{{ post.rating }}<button>
-            </footer>
-        </div>
-    `,
-
-}
+// var PostComponent = {
+//     name: 'post-component',
+//     props: ['post'],
+//     template: `
+//         <div class="post-item">
+//             <p>{{ post.name }}</p>
+//             <p>А доставка - Додо пицца</p>
+//             <footer>
+//                 <a target="_blank" :href="post.link">{{post.author}}</a>
+//                 <button>Лайк</button>
+//                 <button>{{ post.rating }}<button>
+//             </footer>
+//         </div>
+//     `,
+// }
 
 export default {
     name: 'post-list',
