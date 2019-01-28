@@ -5,7 +5,6 @@
             <span>А доставка - Додо пицца</span>
         </p>
         <footer class="post__footer">
-            <p v-if="post.author">Автор: <a target="_blank" :href="post.link">{{post.author}}</a></p>
             <div class="post__like-block" @click="$emit('incrate', post.rating, post.id)">
                 <div class="post__rating">{{ post.rating }}</div>
                 <button class="post__like-btn" >
@@ -14,6 +13,14 @@
                     </svg>
 
                 </button>
+            </div>
+            <div>
+                <p v-if="post.author">
+                    Автор: <a target="_blank" :href="post.link">{{post.author}}</a>
+                </p>
+                <p v-else>
+                    Автор: Неизвестен
+                </p>
             </div>
         </footer>
     </div>
