@@ -7,7 +7,7 @@
             :cols="{default: 3, 1000: 2, 400: 1}"
             :gutter="{default: '20px', 700: '15px'}"
         >
-            <post-component v-if="postIndex < posts.length" v-for="(post, postIndex) in postsToShow" :key="posts[postIndex].id"  :post="posts[postIndex]" v-on:incrate="updateInc" ></post-component>
+            <post-component v-for="postIndex in postsToShow" :key="posts[postIndex].id"  :post="posts[postIndex]" v-on:incrate="updateInc" ></post-component>
         </masonry>
 
         <!-- <button v-if="postsToShow < posts.length" @click="incPostViews(9)">Показать еще</button> -->
@@ -39,9 +39,11 @@ export default {
     },
     methods: {
         handleScroll () {
+            var masonryHeight = this.$refs.masonry.$el.clientHeight,
+                offetHeight = window.innerHeight + window.scrollY;
 
-            if (window.scrollY >= window.outerHeight) {
-                this.incPostViews(5);
+            if (offetHeight > masonryHeight) {
+                this.incPostViews(9);
             }
 
         },
@@ -71,3 +73,15 @@ export default {
 
 </script>
 
+
+<style>
+
+.list-enter-active, .list-leave-active {
+  transition: all 1s;
+}
+.list-enter, .list-leave-to /* .list-leave-active до версии 2.1.8 */ {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+</style>
