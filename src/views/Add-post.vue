@@ -53,11 +53,9 @@ export default {
                 id: this.makeid(),
                 author: this.author,
                 name: this.name,
-                link: this.link,
+                link: 'https://vk.com/' + this.link,
                 rating: 0
             });
-
-
 
             this.name = '';
             this.author = '';
