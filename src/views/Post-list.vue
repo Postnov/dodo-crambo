@@ -1,12 +1,19 @@
 <template>
 
-    <masonry
-        class="post-list"
-        :cols="{default: 3, 1000: 2, 400: 1}"
-        :gutter="{default: '20px', 700: '15px'}"
-    >
-        <post-component v-for="post in posts" :post="post" :key="post.id"  v-on:incrate="updateInc"></post-component>
-    </masonry>
+   <div>
+        <masonry
+            ref="masonry"
+            class="post-list"
+            :cols="{default: 3, 1000: 2, 400: 1}"
+            :gutter="{default: '20px', 700: '15px'}"
+        >
+            <post-component v-if="postIndex < posts.length" v-for="(post, postIndex) in postsToShow" :key="posts[postIndex].id"  :post="posts[postIndex]" v-on:incrate="updateInc" ></post-component>
+        </masonry>
+
+        <!-- <button v-if="postsToShow < posts.length" @click="incPostViews(9)">Показать еще</button> -->
+
+
+   </div>
 
 </template>
 
@@ -20,14 +27,27 @@ export default {
     data() {
         return {
             posts: [],
+            postsToShow: 9
         }
     },
     firestore() {
         return {
-            posts: firebase.firestore().collection('data').doc('rhymes').collection('published').orderBy('createdAt')
+           posts: firebase.firestore().collection('data').doc('rhymes').collection('published').orderBy('createdAt')
         }
+        console.log(this.posts.length)
+
     },
     methods: {
+        handleScroll () {
+
+            if (window.scrollY >= window.outerHeight) {
+                this.incPostViews(5);
+            }
+
+        },
+        incPostViews(count) {
+            this.postsToShow += count;
+        },
         updateInc(rating, id) {
             rating++;
 
@@ -39,6 +59,13 @@ export default {
     components: {
         'post-component': PostComponent,
     },
+
+    created () {
+        window.addEventListener('scroll', this.handleScroll);
+    },
+    destroyed () {
+        window.removeEventListener('scroll', this.handleScroll);
+    }
 
 }
 
