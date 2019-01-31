@@ -47,13 +47,14 @@ export default {
             return text;
         },
         sendRhyme() {
+            if (this.link != '') this.link = 'https://vk.com/' + this.link;
 
             firebase.firestore().collection('data').doc('rhymes').collection('published').add({
                 createdAt: new Date(),
                 id: this.makeid(),
                 author: this.author,
                 name: this.name,
-                link: 'https://vk.com/' + this.link,
+                link: this.link,
                 rating: 0
             });
 
