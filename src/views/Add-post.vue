@@ -47,6 +47,10 @@ export default {
             return text;
         },
         sendRhyme() {
+            this.name = '';
+            this.author = '';
+            this.link = '';
+
             firebase.firestore().collection('data').doc('rhymes').collection('published').add({
                 createdAt: new Date(),
                 id: this.makeid(),
@@ -56,9 +60,8 @@ export default {
                 rating: 0
             });
 
-            this.name = '';
-            this.author = '';
-            this.link = '';
+
+
         }
     }
 }
