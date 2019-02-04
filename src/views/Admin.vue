@@ -2,19 +2,23 @@
     <div class="admin">
         <div class="admin__row">
             <div class="admin__col">
-                <h1>На модерации</h1>
-                <div class="admin-post" v-for="item in moderated" :key="item.id">
-                    <p>{{item.name}}</p>
-                    <button @click="deletePost('moderated', item.id)">Удалить</button>
-                    <button @click="movePost('moderated', 'published', item)">Опубликовать</button>
+                <h1 class="admin__title">На модерации</h1>
+                <div class="admin__list">
+                    <div class="admin-post" v-for="item in moderated" :key="item.id">
+                        <p>{{item.name}}</p>
+                        <button @click="deletePost('moderated', item.id)" class="btn btn-error">Удалить</button>
+                        <button @click="movePost('moderated', 'published', item)" class="btn btn-success">Опубликовать</button>
+                    </div>
                 </div>
             </div>
             <div class="admin__col">
-                <h2>Опубликованные</h2>
-                <div class="admin-post" v-for="item in published" :key="item.id">
-                    <p>{{item.name}}</p>
-                    <button @click="deletePost('published', item.id)">Удалить</button>
-                    <button @click="movePost('published', 'moderated', item)">На модерацию</button>
+                <h1 class="admin__title">Опубликованные</h1>
+                <div class="admin__list">
+                    <div class="admin-post" v-for="item in published" :key="item.id">
+                        <p>{{item.name}}</p>
+                        <button class="btn btn-error" @click="deletePost('published', item.id)">Удалить</button>
+                        <button class="btn btn-warning" @click="movePost('published', 'moderated', item)">На модерацию</button>
+                    </div>
                 </div>
             </div>
         </div>
