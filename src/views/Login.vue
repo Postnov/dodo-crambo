@@ -32,7 +32,7 @@ export default {
                         confirmButtonText: 'Принимаю власть'
                     })
                     // swal('Успешный вход', 'Открываю дверь, стелю дорожку', 'success')
-                    // that.$router.replace('/Admin');
+                    that.$router.replace('/admin');
                 },
                 function(err){
                     switch(err.code) {
