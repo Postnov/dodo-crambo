@@ -19,6 +19,7 @@ body {
 }
 
 
+
 .header {
     display: flex;
     align-items: center;
@@ -240,4 +241,65 @@ body {
     outline: none;
     cursor: pointer;
     margin-top: 30px;
+}
+
+
+.admin {
+    padding: 30px;
+}
+
+
+.admin__row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.admin__col {
+    width: 48%;
+}
+
+.admin__title {
+    color: #fff;
+}
+
+.admin-post {
+    background-color: #fff;
+    width: 100%;
+    padding: 13px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.admin-post p{
+    margin: 0 0 20px;
+}
+
+.admin__list {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.btn {
+    border: none;
+    border-radius: 3px;
+    padding: 7px 15px;
+    cursor: pointer;
+    outline: none;
+}
+
+.btn-error {
+    background-color: rgb(109, 25, 25);
+    color: #fff;
+}
+.btn-success {
+    background-color: rgb(52, 121, 52);
+    color: #fff;
+}
+.btn-warning {
+    background-color: rgb(207, 148, 21);
+    color: #fff;
 }
