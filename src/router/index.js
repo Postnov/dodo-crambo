@@ -3,10 +3,11 @@ import Router from 'vue-router'
 import Home from '@/views/Home'
 import Login from '@/views/Login'
 import Admin from '@/views/Admin'
+import firebase from 'firebase'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   routes: [
     {
       path: '/',
@@ -18,7 +19,22 @@ export default new Router({
     },
     {
       path: '/admin',
-      component: Admin
+      component: Admin,
+      meta: {
+        requiresAuth: true
+      }
     }
   ]
 })
+
+
+router.beforeEach((to, from, next) => {
+  const currentUser = firebase.auth().currentUser;
+  const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+
+  if (requiresAuth && !currentUser) next('/');
+  else next();
+});
+
+
+export default router;
