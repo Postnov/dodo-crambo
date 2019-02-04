@@ -2,8 +2,8 @@
     <div>
         <div class="post-slider" >
             <swiper :options="swiperOption" ref="mySwiper" >
-                <swiper-slide v-if="postIndex < posts.length" v-for="postIndex in postsToShow" :key="posts[postIndex].id" >
-                    <post-component class="post-slide" :post="posts[postIndex]" v-on:incrate="updateInc"></post-component>
+                <swiper-slide v-for="post in posts.slice(0, postsToShow)" :key="post.id" >
+                    <post-component class="post-slide" :post="post" v-on:incrate="updateInc"></post-component>
                 </swiper-slide>
                 <div class="swiper-button-prev" slot="button-prev"></div>
                 <div class="swiper-button-next" slot="button-next" @click="incPostViews(1)"></div>

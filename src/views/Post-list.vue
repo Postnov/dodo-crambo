@@ -7,7 +7,7 @@
             :cols="{default: 3, 1000: 2, 400: 1}"
             :gutter="{default: '20px', 700: '15px'}"
         >
-            <post-component v-if="postIndex < posts.length" v-for="postIndex in postsToShow" :key="posts[postIndex].id"  :post="posts[postIndex]" v-on:incrate="updateInc" ></post-component>
+            <post-component v-for="post in posts.slice(0, postsToShow)" :key="post.id"  :post="post" v-on:incrate="updateInc" ></post-component>
         </masonry>
 
         <!-- <button v-if="postsToShow < posts.length" @click="incPostViews(9)">Показать еще</button> -->
@@ -27,15 +27,13 @@ export default {
     data() {
         return {
             posts: [],
-            postsToShow: 9
+            postsToShow: 9,
         }
     },
     firestore() {
         return {
            posts: firebase.firestore().collection('data').doc('rhymes').collection('published').orderBy('createdAt')
         }
-        console.log(this.posts.length)
-
     },
     methods: {
         handleScroll () {
