@@ -49,7 +49,7 @@ export default {
         sendRhyme() {
             if (this.link != '') this.link = 'https://vk.com/' + this.link;
 
-            firebase.firestore().collection('data').doc('rhymes').collection('published').add({
+            firebase.firestore().collection('data').doc('rhymes').collection('moderated').add({
                 createdAt: new Date(),
                 id: this.makeid(),
                 author: this.author,
