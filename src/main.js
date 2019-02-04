@@ -8,6 +8,7 @@ import firebaseConfig from '@/configsData/firebase'
 import firebase from 'firebase/app'
 import 'firebase/firestore'
 import VueMasonry from 'vue-masonry-css'
+import Swal from 'sweetalert2'
 
 // require styles
 import 'swiper/dist/css/swiper.css';
@@ -32,4 +33,4 @@ new Vue({
 
 
 
-export {firebase, VueMasonry}
+export {firebase, VueMasonry, Swal}
