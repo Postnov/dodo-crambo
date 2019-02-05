@@ -1,7 +1,6 @@
 <template>
     <div class="add-post">
         <div class="add-post__content">
-            <h1 class="add-post__title">Добавить</h1>
             <form @submit.prevent="sendRhyme()" class="add-post__form">
                 <div class="add-post__input-block">
                     <p class="add-post__input-label">Рифма</p>
