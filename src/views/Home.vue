@@ -4,9 +4,10 @@
             <div class="header__left">
                 <p class="logo-text" @click="view = 'posts'">Додо Рифма</p>
             </div>
+
             <div class="header__right">
                     <button class="header__btn" @click="view = 'post-list'">Все рифмы</button>
-                    <button class="header__btn" @click="view = 'add-post'">Создать свою</button>
+                    <button class="header__btn" @click="view = 'add-post'">Добавить свою</button>
             </div>
         </header>
         <div class="app-content">
