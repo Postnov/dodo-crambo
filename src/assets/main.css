@@ -47,6 +47,10 @@ body {
     cursor: pointer;
 }
 
+.login-form {
+    padding-top: 150px;
+}
+
 .author {
     position: fixed;
     bottom: 0;

@@ -1,8 +1,15 @@
 <template>
-    <form action="" @submit.prevent="login()">
-        <input v-model="email" type="text" placeholder="Email" autocomplete>
-        <input v-model="password" type="password" placeholder="Пароль" autocomplete>
-        <button>Войти</button>
+    <form class="login-form add-post__form" action="" @submit.prevent="login()">
+        <div class="add-post__input-block">
+            <p class="add-post__input-label">Email</p>
+            <input class="add-post__input" v-model="email" type="text" autocomplete>
+        </div>
+        <div class="add-post__input-block">
+            <p class="add-post__input-label">Пароль</p>
+            <input class="add-post__input" v-model="password" type="password" autocomplete>
+        </div>
+
+        <button class="add-post__btn">Войти</button>
     </form>
 </template>
 
@@ -31,7 +38,6 @@ export default {
                         type: 'success',
                         confirmButtonText: 'Принимаю власть'
                     })
-                    // swal('Успешный вход', 'Открываю дверь, стелю дорожку', 'success')
                     that.$router.replace('/admin');
                 },
                 function(err){
