@@ -5,8 +5,8 @@
                 <p class="logo-text" @click="view = 'posts'">Додо Рифма</p>
             </div>
             <div class="header__right">
-                    <button @click="view = 'post-list'">Все рифмы </button>
-                    <button @click="view = 'add-post'">Создать свою</button>
+                    <button class="header__btn" @click="view = 'post-list'">Все рифмы</button>
+                    <button class="header__btn" @click="view = 'add-post'">Создать свою</button>
             </div>
         </header>
         <div class="app-content">
@@ -15,6 +15,10 @@
                     <component :is="view"></component>
                 </keep-alive>
             </transition>
+        </div>
+
+        <div class="author">
+            <p class="author__text">Автор проекта: <a href="https://dev-postnov.ru">Постнов Даниил</a> </p>
         </div>
     </div>
 </template>
