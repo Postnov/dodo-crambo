@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import { firebase } from '../main'
+import { firebase, Swal } from '../main'
 
 
 export default {
@@ -46,6 +46,18 @@ export default {
             return text;
         },
         sendRhyme() {
+
+            if (this.name == '') {
+                Swal.fire({
+                    title: 'Ошибка',
+                    text: 'Вы не ввели рифму',
+                    type: 'error',
+                    confirmButtonText: 'Окей зануда'
+                })
+
+                return;
+            }
+
             if (this.link != '') this.link = 'https://vk.com/' + this.link;
 
             firebase.firestore().collection('data').doc('rhymes').collection('moderated').add({
@@ -60,6 +72,13 @@ export default {
             this.name = '';
             this.author = '';
             this.link = '';
+
+            Swal.fire({
+                title: 'Рифма добавлена!',
+                html: 'Добро пожаловать в ряды рифмоплетов!<br>Админ оценит качество и опубликует',
+                type: 'success',
+                confirmButtonText: 'Это честь для меня'
+            })
 
         }
     }
