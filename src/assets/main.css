@@ -11,7 +11,13 @@ body {
 
     box-sizing: border-box;
     color: #555;
+}
 
+.link-return {
+    text-decoration: none;
+    color: #fff;
+    padding: 3px;
+    border-bottom: 1px solid;
 }
 
 .preloader {

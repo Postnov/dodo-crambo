@@ -1,5 +1,7 @@
 <template>
     <div class="admin">
+        <router-link to="/" class="link-return">Вернуться</router-link>
+
         <div class="admin__row">
             <div class="admin__col">
                 <h1 class="admin__title">На модерации</h1>
