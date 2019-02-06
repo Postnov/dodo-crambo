@@ -448,6 +448,10 @@ body {
 
 
 @media only screen and (max-width: 600px) {
+    .admin__col {
+        width: 100%;
+    }
+
     .swiper-arrow-prev,
     .swiper-arrow-next {
         width: 30px;
