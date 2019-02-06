@@ -445,11 +445,11 @@ body {
         width: 30px;
         height: 30px;
 
-        top: 70%;
+        top: 80%;
     }
 
     .swiper-slide {
-        height: 70vh;
+        height: calc(100vh - 250px)
     }
 
     .post-slide .post__footer {
@@ -468,7 +468,7 @@ body {
     }
 
     .post-slide .post__title {
-        font-size: 35px;
+        font-size: 2.2em;
     }
 
     .header__left,
@@ -477,10 +477,4 @@ body {
         text-align: center;
     }
 
-
-
-    .logo-text {
-        /* margin: 0 auto;
-        width: 100%; */
-    }
 }
