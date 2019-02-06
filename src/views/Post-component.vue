@@ -15,9 +15,6 @@
                     <a v-if="post.link" target="_blank" :href="post.link">{{post.author}}</a>
                     <span v-else>{{post.author}}</span>
                 </p>
-                <p v-else>
-                    Автор: Неизвестен
-                </p>
             </div>
         </footer>
     </div>
