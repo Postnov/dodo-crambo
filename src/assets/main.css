@@ -76,6 +76,12 @@ body {
     font-weight: bold;
 }
 
+.logo-text--return {
+    /* font-size: 16px; */
+    border-bottom: 1px solid;
+    padding: 3px;
+}
+
 .login-form {
     padding-top: 150px;
 }

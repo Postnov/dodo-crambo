@@ -5,8 +5,9 @@
         </div>
         <header class="page__header header">
             <div class="header__left">
-                <p class="logo-text" @click="view = 'posts'">Додо Рифма</p>
-            </div>
+                <p v-if="view == 'posts'" class="logo-text" @click="view = 'posts'">Додо Рифма</p>
+                <p v-if="view != 'posts'" class="logo-text logo-text--return" @click="view = 'posts'">На главную</p>
+        </div>
 
             <div class="header__right">
                     <button class="header__btn" @click="view = 'post-list'">Все рифмы</button>
