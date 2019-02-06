@@ -4,7 +4,7 @@
         <masonry
             ref="masonry"
             class="post-list"
-            :cols="{default: 3, 1000: 2, 400: 1}"
+            :cols="{default: 3, 1000: 2, 700: 1}"
             :gutter="{default: '20px', 700: '15px'}"
         >
             <post-component v-for="post in posts.slice(0, postsToShow)" :key="post.id"  :post="post" v-on:incrate="updateInc" ></post-component>
