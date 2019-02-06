@@ -7,7 +7,9 @@
                 <h1 class="admin__title">На модерации</h1>
                 <div class="admin__list">
                     <div class="admin-post" v-for="item in moderated" :key="item.id">
-                        <p>{{item.name}}</p>
+                        <p>{{ item.name }}</p>
+                        <p>{{ item.author }}</p>
+                        <p>{{ item.link }}</p>
                         <button @click="movePost('moderated', 'published', item)" class="btn btn-success">Опубликовать</button>
                         <button @click="deletePost('moderated', item.id)" class="btn btn-error">Удалить</button>
                     </div>
@@ -17,7 +19,9 @@
                 <h1 class="admin__title">Опубликованные</h1>
                 <div class="admin__list">
                     <div class="admin-post" v-for="item in published" :key="item.id">
-                        <p>{{item.name}}</p>
+                        <p>{{ item.name }}</p>
+                        <p>{{ item.author }}</p>
+                        <p>{{ item.link }}</p>
                         <button class="btn btn-warning" @click="movePost('published', 'moderated', item)">На модерацию</button>
                         <button class="btn btn-error" @click="deletePost('published', item.id)">Удалить</button>
                     </div>
