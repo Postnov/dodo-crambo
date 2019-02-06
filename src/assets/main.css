@@ -5,7 +5,7 @@
 body {
     margin: 0;
     /* padding: 0 0 40px; */
-    height: 100vh;
+    /* height: 100vh; */
     background-color: rgb(255, 105, 0);
     font-family: 'Lato', BlinkMacSystemFont,-apple-system,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,Arial, sans-serif;
 
@@ -39,13 +39,14 @@ body {
 }
 
 .page > div {
-    height: 100vh;
+    height: 100%;
 }
 
 * {box-sizing: inherit;}
 
 #app {
     position: relative;
+    height: 100%;
 }
 
 
@@ -80,21 +81,17 @@ body {
 }
 
 .author {
-    position: fixed;
-    bottom: 0;
-    left: 0;
+    margin-top: 40px;
     width: 100%;
     padding: 15px;
     text-align: center;
     color: #fff;
     font-weight: 300;
     z-index: 100;
-
-    background-color: rgb(240, 97, 2);
 }
 
 .author__text {
-    opacity: 0.8;
+    opacity: 1;
     margin: 0;
 }
 
@@ -113,7 +110,6 @@ body {
     padding-right: 15px;
     max-height: 100%;
     overflow-y: auto;
-    padding-bottom: 200px;
 }
 
 .swiper-slide {
