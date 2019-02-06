@@ -348,6 +348,14 @@ body {
     opacity: 0.5;
     margin-left: 10px;
 }
+
+.add-post__tip {
+    text-align: left;
+    color: #fff;
+    font-size: 13px;
+    opacity: 0.6;
+}
+
 .add-post__input {
     width: 100%;
     display: block;
