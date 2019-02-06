@@ -111,6 +111,9 @@ body {
     position: relative;
     padding-left: 15px;
     padding-right: 15px;
+    max-height: 100%;
+    overflow-y: auto;
+    padding-bottom: 200px;
 }
 
 .swiper-slide {
