@@ -195,6 +195,18 @@ body {
     flex-wrap: wrap;
 
     user-select: none;
+
+    background-image: url(../assets/pizza.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 21px;
+    width: 20px;
+    margin: 0 3px;
+}
+
+.post-slide .post__like-btn {
+    height: 26px;
+    width: 13px;
 }
 
 .post-slide .post__rating {
