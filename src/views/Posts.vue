@@ -6,8 +6,6 @@
                     <post-component class="post-slide" :post="post" v-on:incrate="updateInc"></post-component>
                 </swiper-slide>
 
-                <!-- <div class="swiper-button-prev" slot="button-prev"></div> -->
-
             </swiper>
 
                 <svg class="swiper-arrow-prev"  enable-background="new 0 0 31.494 31.494" version="1.1" viewBox="0 0 31.494 31.494" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
@@ -75,16 +73,8 @@ export default {
             return this.$refs.mySwiper.swiper
         }
     },
-    mounted() {
-        // current swiper instance
-        // 然后你就可以使用当前上下文内的swiper对象去做你想做的事了
-        //   console.log('this is current swiper instance object', this.swiper)
-        // this.swiper.slideTo(3, 0, false)
-
-
-    },
-    created() {
-    }
+    mounted() {},
+    created() {}
 }
 
 </script>
