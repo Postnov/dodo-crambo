@@ -5,7 +5,7 @@
                 <div class="add-post__input-block">
                     <p class="add-post__input-label">Рифма</p>
                     <input class="add-post__input" type="text" v-model="name" placeholder="Ой, снежинка на реснице">
-                    <p class="add-post__tip">Пишите только первую часть рифмы, к первой части будет автоматически добавляться фраза "А доставка - Додо пицца".</p>
+                    <p class="add-post__tip">Пишите только первую часть рифмы, к ней автоматически добавится фраза "А доставка - Додо пицца".</p>
                 </div>
                 <div class="add-post__input-block">
                     <p class="add-post__input-label">Ваше имя <span>необязательно</span></p>
