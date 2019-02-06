@@ -37,7 +37,7 @@ export default {
     },
     methods: {
         handleScroll () {
-            var masonryHeight = this.$refs.masonry.$el.clientHeight,
+            var masonryHeight = this.$refs.masonry.$el.clientHeight + 150,
                 offetHeight = window.innerHeight + window.scrollY;
 
             if (offetHeight > masonryHeight) {
