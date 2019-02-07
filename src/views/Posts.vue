@@ -89,21 +89,14 @@ var Posts = {
 
         var checkPosts = setInterval(function() {
             if (window.navigator.onLine == true && _this.posts.length == 0) {
-                _this.posts = [];
 
-                firebase.firestore().collection('data').doc('rhymes').collection('published').get().then(function(querySnapshot) {
-                    querySnapshot.forEach(function(doc) {
-                        // doc.data() is never undefined for query doc snapshots
-                        // console.log(doc.id, " => ", doc.data());
-                        _this.posts.push(doc.data());
-                    });
-                });
+                _this.$firestoreRefs.posts = firebase.firestore().collection('data').doc('rhymes').collection('published').orderBy('createdAt', 'desc')
 
                 clearTimeout(checkPosts);
             }
 
             if (_this.posts.length) clearTimeout(checkPosts);
-        },500);
+        }, 500);
     }
 };
 
