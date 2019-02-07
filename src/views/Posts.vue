@@ -38,6 +38,7 @@ var Posts = {
                 simulateTouch: true,
                 infinite: false,
                 speed: 500,
+                reverseDirection: true,
                 autoplay: {
                     delay: 5000,
                 },
