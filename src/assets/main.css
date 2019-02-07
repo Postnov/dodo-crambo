@@ -209,6 +209,11 @@ body {
     width: 20px;
     margin: 0 4px;
     fill: rgb(255, 105, 0);
+    transition: .3s all;
+}
+
+.post__like-btn:hover {
+    transform: translateY(-2px);
 }
 
 .post-slide .post__like-btn {
