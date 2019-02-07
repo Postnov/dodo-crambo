@@ -28,6 +28,7 @@ import PostComponent from '@/views/Post-component.vue';
 var Posts = {
     name: 'posts',
     data() {
+        var vue = this;
         return {
             msg: 0,
             posts: [],
@@ -45,7 +46,9 @@ var Posts = {
                     prevEl: '.swiper-arrow-prev',
                 },
                 on: {
-                    slideChange() {}
+                    slideChange() {
+                        vue.incPostViews(1)
+                    }
                 }
             }
         }
