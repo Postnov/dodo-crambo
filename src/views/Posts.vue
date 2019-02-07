@@ -45,10 +45,7 @@ var Posts = {
                     prevEl: '.swiper-arrow-prev',
                 },
                 on: {
-                    slideChange() {
-                       var data = Posts.data();
-                       console.log(data.postsToShow);
-                    }
+                    slideChange() {}
                 }
             }
         }
@@ -60,8 +57,7 @@ var Posts = {
     },
     methods: {
         incPostViews(count) {
-            if (this.postsToShow < this.posts.length)
-                this.postsToShow += count;
+            if (this.postsToShow < this.posts.length) this.postsToShow += count;
             else return;
         },
         updateInc(rating, id) {
