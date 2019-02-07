@@ -73,8 +73,28 @@ export default {
             return this.$refs.mySwiper.swiper
         }
     },
-    mounted() {},
-    created() {}
+    mounted() {
+
+    },
+    created() {
+        var _this = this;
+
+        var checkPosts = setInterval(function() {
+            if (window.navigator.onLine == true && _this.posts.length == 0) {
+                firebase.firestore().collection('data').doc('rhymes').collection('published').get().then(function(querySnapshot) {
+                    querySnapshot.forEach(function(doc) {
+                        // doc.data() is never undefined for query doc snapshots
+                        // console.log(doc.id, " => ", doc.data());
+                        _this.posts.push(doc.data());
+                    });
+                });
+
+                clearTimeout(checkPosts);
+            }
+
+            if (_this.posts.length) clearTimeout(checkPosts);
+        },500);
+    }
 }
 
 </script>
