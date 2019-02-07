@@ -25,7 +25,7 @@ import { firebase } from '../main'
 import PostComponent from '@/views/Post-component.vue';
 
 
-export default {
+var Posts = {
     name: 'posts',
     data() {
         return {
@@ -35,6 +35,7 @@ export default {
             swiperOption: {
                 allowTouchMove: true,
                 simulateTouch: true,
+                infinite: false,
                 speed: 500,
                 autoplay: {
                     delay: 5000,
@@ -42,6 +43,12 @@ export default {
                 navigation: {
                     nextEl: '.swiper-arrow-next',
                     prevEl: '.swiper-arrow-prev',
+                },
+                on: {
+                    slideChange() {
+                       var data = Posts.data();
+                       console.log(data.postsToShow);
+                    }
                 }
             }
         }
@@ -53,7 +60,7 @@ export default {
     },
     methods: {
         incPostViews(count) {
-            this.postsToShow += count;
+                this.postsToShow += count;
         },
         updateInc(rating, id) {
             rating++;
@@ -81,6 +88,8 @@ export default {
 
         var checkPosts = setInterval(function() {
             if (window.navigator.onLine == true && _this.posts.length == 0) {
+                _this.posts = [];
+
                 firebase.firestore().collection('data').doc('rhymes').collection('published').get().then(function(querySnapshot) {
                     querySnapshot.forEach(function(doc) {
                         // doc.data() is never undefined for query doc snapshots
@@ -95,7 +104,9 @@ export default {
             if (_this.posts.length) clearTimeout(checkPosts);
         },500);
     }
-}
+};
+
+export default Posts;
 
 </script>
 
