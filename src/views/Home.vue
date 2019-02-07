@@ -52,12 +52,12 @@ export default {
     },
     mounted() {
 
-        var that = this;
+        var _this = this;
 
 
         firebase.firestore().collection('data').doc('rhymes').collection('published').get().then(function(querySnapshot) {
             querySnapshot.forEach(function(doc) {
-                that.$refs.preloader.classList.add('hide');
+                _this.$refs.preloader.classList.add('hide');
             });
         });
 
@@ -68,7 +68,7 @@ export default {
 
         class Pizza {
             constructor(id) {
-                this.canvas = that.$refs[id]
+                this.canvas = _this.$refs[id]
                 this.ctx = this.canvas.getContext('2d')
 
                 this.sliceCount = 6
