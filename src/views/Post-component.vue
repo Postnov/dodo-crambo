@@ -36,12 +36,7 @@
                 id: this.post.id
             }
         },
-        methods: {
-            incRate() {
-
-            }
-        },
-        mounted() {
-        }
+        methods: {},
+        mounted() {}
     }
 </script>
