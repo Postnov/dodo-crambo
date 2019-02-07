@@ -60,7 +60,9 @@ var Posts = {
     },
     methods: {
         incPostViews(count) {
+            if (this.postsToShow < this.posts.length)
                 this.postsToShow += count;
+            else return;
         },
         updateInc(rating, id) {
             rating++;
