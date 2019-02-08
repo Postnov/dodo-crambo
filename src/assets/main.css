@@ -135,11 +135,12 @@ body {
 }
 
 .swiper-slide {
-    /* height: calc(100vh - 220px); */
+    min-height: calc(100vh - 250px);
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
 
 .post-list {
     display: flex;
