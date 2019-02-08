@@ -75,14 +75,15 @@ var Posts = {
 
             firebase.firestore().collection('data').doc('rhymes').collection('published').doc(id).set({
                 rating: rating
-            }, {merge: true});
-
-            // console.log(type);
-
-            if (type == 'slide') {
-                this.createFallIcon();
-                this.createFallIcon();
-            }
+            }, {
+                merge: true
+            }).then(() => {
+               if (type == 'slide') {
+                    this.createFallIcon();
+                    this.createFallIcon();
+                    this.createFallIcon();
+               }
+            });
         },
         createFallIcon() {
             var width, height, left, id, random, randomLeft, top, animationDuration, randomAnimationDuration;
@@ -122,11 +123,11 @@ var Posts = {
             //add in array
             this.fallignIcons.push(item);
 
-            // setTimeout(() =>  {
-            //     this.fallignIcons = this.fallignIcons.filter(item => {
-            //         return item.id != id;
-            //     });
-            // }, 2000);
+            setTimeout(() =>  {
+                this.fallignIcons = this.fallignIcons.filter(item => {
+                    return item.id != id;
+                });
+            }, 3000);
 
 
         },
