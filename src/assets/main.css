@@ -485,11 +485,14 @@ body {
     color: #fff;
 }
 
-@media only screen and (max-width: 979px) {
-}
-
 
 @media only screen and (max-width: 600px) {
+    .header {
+        margin-bottom: 0;
+    }
+    .swiper-slide {
+        min-height: calc(100vh - 300px);
+    }
     .author {
         margin-top: 0;
     }
