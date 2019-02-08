@@ -45,8 +45,8 @@ export default {
     },
     firestore() {
         return {
-            published: firebase.firestore().collection('data').doc('rhymes').collection('published').orderBy('createdAt'),
-            moderated: firebase.firestore().collection('data').doc('rhymes').collection('moderated').orderBy('createdAt')
+            published: firebase.firestore().collection('data').doc('rhymes').collection('published').orderBy('createdAt', 'desc'),
+            moderated: firebase.firestore().collection('data').doc('rhymes').collection('moderated').orderBy('createdAt', 'desc')
         }
 
     },
