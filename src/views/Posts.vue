@@ -7,7 +7,7 @@
         <div class="post-slider" >
             <swiper :options="swiperOption" ref="mySwiper" >
                 <swiper-slide v-for="post in posts.slice(0, postsToShow)" :key="post.id" >
-                    <post-component class="post-slide" :post="post" v-on:incrate="updateInc"></post-component>
+                    <post-component class="post-slide" :post="post" :type="'slide'" v-on:incrate="updateInc"></post-component>
                 </swiper-slide>
 
             </swiper>
@@ -70,22 +70,30 @@ var Posts = {
             if (this.postsToShow < this.posts.length) this.postsToShow += count;
             else return;
         },
-        updateInc(rating, id) {
+        updateInc(rating, id, type) {
             rating++;
 
             firebase.firestore().collection('data').doc('rhymes').collection('published').doc(id).set({
                 rating: rating
             }, {merge: true});
 
-            this.createFallIcon();
+            // console.log(type);
+
+            if (type == 'slide') {
+                this.createFallIcon();
+                this.createFallIcon();
+            }
         },
         createFallIcon() {
-            var width, height, left, id, random, randomLeft, top;
+            var width, height, left, id, random, randomLeft, top, animationDuration, randomAnimationDuration;
 
             //set id and random
             id = "icon_" + Math.random().toString(16).slice(2);
-            random = this.randomNumber(1, 7, 1);
-            randomLeft = this.randomNumber(0, 100, 1);
+            random = this.randomNumber(1, 7, 0);
+            randomLeft = this.randomNumber(0, 100, 0);
+
+            randomAnimationDuration = this.randomNumber(2, 4, 0);
+            animationDuration = randomAnimationDuration + 's';
 
             //set width icon
             width = 10 * random;
@@ -105,6 +113,7 @@ var Posts = {
                     height,
                     top,
                     left,
+                    animationDuration
                 },
                 id,
                 animationClass: true
@@ -113,11 +122,12 @@ var Posts = {
             //add in array
             this.fallignIcons.push(item);
 
-            setTimeout(() =>  {
-                this.fallignIcons = this.fallignIcons.filter(item => {
-                    return item.id != id;
-                });
-            }, 2500)
+            // setTimeout(() =>  {
+            //     this.fallignIcons = this.fallignIcons.filter(item => {
+            //         return item.id != id;
+            //     });
+            // }, 2000);
+
 
         },
         randomNumber(min, max, precision) {
