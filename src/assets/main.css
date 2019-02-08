@@ -485,8 +485,14 @@ body {
     color: #fff;
 }
 
+@media only screen and (max-width: 979px) {
+}
+
 
 @media only screen and (max-width: 600px) {
+    .author {
+        margin-top: 0;
+    }
     .admin__col {
         width: 100%;
     }
@@ -518,7 +524,7 @@ body {
     }
 
     .post-slide .post__title {
-        font-size: 2.2em;
+        font-size: 1.9em;
     }
 
     .header__left,
