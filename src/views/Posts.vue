@@ -91,38 +91,33 @@ var Posts = {
             });
         },
         createFallIcon() {
-            var width, height, left, id, random, randomLeft, top, animationDuration, randomAnimationDuration;
+            var width, height, left, id, random, randomLeft, top, animationDuration;
 
             //set id and random
             id = "icon_" + Math.random().toString(16).slice(2);
             random = this.randomNumber(1, 7, 0);
-            randomLeft = this.randomNumber(0, 100, 0);
+            randomLeft = this.randomNumber(0, 99, 0);
 
-            randomAnimationDuration = this.randomNumber(2, 4, 0);
-            animationDuration = randomAnimationDuration + 's';
+            //set animation duration random
+            animationDuration = this.randomNumber(2, 4, 0) + 's';
 
             //set width icon
             width = 10 * random;
             height = width;
 
             //set position
-            left =  randomLeft + '%';
-            top = +height * -1 + 'px';
+            left =  randomLeft;
+            top = +height * -1;
 
-            //add 'px' in end
+            //add metrics sign in end for styles
             height += 'px';
             width += 'px';
+            top += 'px';
+            left += '%';
 
             var item = {
-                styles: {
-                    width,
-                    height,
-                    top,
-                    left,
-                    animationDuration
-                },
+                styles: {width, height, top, left, animationDuration},
                 id,
-                animationClass: true
             };
 
             //add in array
@@ -132,7 +127,7 @@ var Posts = {
                 this.fallignIcons = this.fallignIcons.filter(item => {
                     return item.id != id;
                 });
-            }, 3000);
+            }, 4000);
 
 
         },
