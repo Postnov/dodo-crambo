@@ -1,5 +1,9 @@
 <template>
     <div>
+        <!-- fly pizza! -->
+        <div :style="item.styles" class="fly-icon falling-animate" v-for="item in fallignIcons" :key="item.id"></div>
+
+
         <div class="post-slider" >
             <swiper :options="swiperOption" ref="mySwiper" >
                 <swiper-slide v-for="post in posts.slice(0, postsToShow)" :key="post.id" >
@@ -23,6 +27,7 @@
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
 import { firebase } from '../main'
 import PostComponent from '@/views/Post-component.vue';
+import { setTimeout } from 'timers';
 
 
 var Posts = {
@@ -33,6 +38,7 @@ var Posts = {
             msg: 0,
             posts: [],
             postsToShow: 5,
+            fallignIcons: [],
             swiperOption: {
                 allowTouchMove: true,
                 simulateTouch: true,
@@ -69,7 +75,55 @@ var Posts = {
 
             firebase.firestore().collection('data').doc('rhymes').collection('published').doc(id).set({
                 rating: rating
-            }, {merge: true})
+            }, {merge: true});
+
+            this.createFallIcon();
+        },
+        createFallIcon() {
+            var width, height, left, id, random, randomLeft, top;
+
+            //set id and random
+            id = "icon_" + Math.random().toString(16).slice(2);
+            random = this.randomNumber(1, 7, 1);
+            randomLeft = this.randomNumber(0, 100, 1);
+
+            //set width icon
+            width = 10 * random;
+            height = width;
+
+            //set position
+            left =  randomLeft + '%';
+            top = +height * -1 + 'px';
+
+            //add 'px' in end
+            height += 'px';
+            width += 'px';
+
+            var item = {
+                styles: {
+                    width,
+                    height,
+                    top,
+                    left,
+                },
+                id,
+                animationClass: true
+            };
+
+            //add in array
+            this.fallignIcons.push(item);
+
+            setTimeout(() =>  {
+                this.fallignIcons = this.fallignIcons.filter(item => {
+                    return item.id != id;
+                });
+            }, 2500)
+
+        },
+        randomNumber(min, max, precision) {
+            var x = Math.random() * (max - min) + min;
+            var p = Math.pow(10, precision);
+            return Math.round(x * p) / p;
         }
     },
     components: {

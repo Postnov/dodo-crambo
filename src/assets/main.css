@@ -13,6 +13,26 @@ body {
     color: #555;
 }
 
+.fly-icon {
+    background-image: url('../assets/pizza.svg');
+    width: 60px;
+    height: 60px;
+    background-size: cover;
+
+    transition: .3s all;
+    position: absolute;
+    top: 0;
+}
+
+.falling-animate {
+    animation: falling 2s linear;
+}
+
+@keyframes falling {
+    from {transform: translateY(0) rotate(0);}
+    to {transform: translateY(115vh) rotate(360deg);}
+}
+
 .link-return {
     text-decoration: none;
     color: #fff;
@@ -110,7 +130,6 @@ body {
 
 
 .app-content {
-    position: relative;
     padding-left: 15px;
     padding-right: 15px;
 }
