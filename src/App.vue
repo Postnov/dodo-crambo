@@ -27,10 +27,6 @@ export default {
 </script>
 
 <style>
-	#app {
-		overflow: hidden;
-	}
-
 	.slide-fade-enter-active {
 		transition: all .3s ease;
 	}
