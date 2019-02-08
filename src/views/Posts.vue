@@ -4,7 +4,11 @@
         <div :style="item.styles" class="fly-icon falling-animate" v-for="item in fallignIcons" :key="item.id"></div>
 
 
-        <div class="post-slider" >
+        <div
+            class="post-slider"
+            @mouseenter="$refs.mySwiper.swiper.autoplay.stop()"
+            @mouseleave="$refs.mySwiper.swiper.autoplay.start()"
+            >
             <swiper :options="swiperOption" ref="mySwiper" >
                 <swiper-slide v-for="post in posts.slice(0, postsToShow)" :key="post.id" >
                     <post-component class="post-slide" :post="post" :type="'slide'" v-on:incrate="updateInc"></post-component>
@@ -52,6 +56,7 @@ var Posts = {
                     nextEl: '.swiper-arrow-next',
                     prevEl: '.swiper-arrow-prev',
                 },
+                autoplayDisableOnInteraction: true,
                 on: {
                     slideChange() {
                         vue.incPostViews(1)
