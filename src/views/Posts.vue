@@ -95,7 +95,7 @@ var Posts = {
 
             //set id and random
             id = "icon_" + Date.now();
-            random = this.randomNumber(1, 7, 0);
+            random = this.randomNumber(2, 7, 1);
             randomLeft = this.randomNumber(0, 99, 0);
 
             //set animation duration random
