@@ -94,7 +94,7 @@ var Posts = {
             var width, height, left, id, random, randomLeft, top, animationDuration;
 
             //set id and random
-            id = "icon_" + Math.random().toString(16).slice(2);
+            id = "icon_" + Date.now();
             random = this.randomNumber(1, 7, 0);
             randomLeft = this.randomNumber(0, 99, 0);
 
