@@ -3,11 +3,13 @@
         <!-- fly pizza! -->
         <div :style="item.styles" class="fly-icon falling-animate" v-for="item in fallignIcons" :key="item.id"></div>
 
+<!--
+            @mouseenter="$refs.mySwiper.swiper.autoplay.stop()"
+            @mouseleave="$refs.mySwiper.swiper.autoplay.start()"
+ -->
 
         <div
             class="post-slider"
-            @mouseenter="$refs.mySwiper.swiper.autoplay.stop()"
-            @mouseleave="$refs.mySwiper.swiper.autoplay.start()"
             >
             <swiper :options="swiperOption" ref="mySwiper" >
                 <swiper-slide v-for="post in posts.slice(0, postsToShow)" :key="post.id" >
@@ -56,7 +58,7 @@ var Posts = {
                     nextEl: '.swiper-arrow-next',
                     prevEl: '.swiper-arrow-prev',
                 },
-                autoplayDisableOnInteraction: true,
+                // autoplayDisableOnInteraction: true,
                 on: {
                     slideChange() {
                         vue.incPostViews(1)
