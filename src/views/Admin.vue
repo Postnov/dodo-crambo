@@ -57,7 +57,13 @@ export default {
         movePost(from, to, item) {
             firebase.firestore().collection('data').doc('rhymes').collection(from).doc(item.id).delete();
 
-            firebase.firestore().collection('data').doc('rhymes').collection(to).doc(item.id).set(item)
+            firebase.firestore().collection('data').doc('rhymes').collection(to).doc(item.id).set(item);
+
+            firebase.firestore().collection('data').doc('rhymes').collection(to).doc(item.id).set({
+                createdAt: new Date()
+            }, {merge: true});
+
+
         }
     }
 }
