@@ -14,7 +14,7 @@
 
                 <div class="add-post__input-block">
                     <p class="add-post__input-label">Ссылка на вк <span>необязательно</span></p>
-                    <input class="add-post__input" type="text" v-model="link" placeholder="id1312351">
+                    <input class="add-post__input" type="text" v-model="link" placeholder="https://vk.com/postnov_daniil">
                 </div>
                 <button class="add-post__btn" type="submit">Отправить</button>
             </form>
@@ -58,8 +58,6 @@ export default {
 
                 return;
             }
-
-            if (this.link != '') this.link = 'https://vk.com/' + this.link;
 
             firebase.firestore().collection('data').doc('rhymes').collection('moderated').add({
                 createdAt: new Date(),
