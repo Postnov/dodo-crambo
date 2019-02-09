@@ -1,7 +1,7 @@
 <template>
     <div>
         <!-- fly pizza! -->
-        <div :style="item.styles" class="fly-icon falling-animate" v-for="item in fallignIcons" :key="item.id"></div>
+        <!-- <div :style="item.styles" class="fly-icon falling-animate" v-for="item in fallignIcons" :key="item.id"></div> -->
 
 <!--
             @mouseenter="$refs.mySwiper.swiper.autoplay.stop()"
@@ -41,7 +41,6 @@ var Posts = {
     data() {
         var vue = this;
         return {
-            msg: 0,
             posts: [],
             postsToShow: 5,
             fallignIcons: [],
@@ -85,11 +84,11 @@ var Posts = {
             }, {
                 merge: true
             }).then(() => {
-               if (type == 'slide') {
-                    this.createFallIcon();
-                    this.createFallIcon();
-                    this.createFallIcon();
-               }
+            //    if (type == 'slide') {
+            //         this.createFallIcon();
+            //         this.createFallIcon();
+            //         this.createFallIcon();
+            //    }
             });
         },
         createFallIcon() {
