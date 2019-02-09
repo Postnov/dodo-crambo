@@ -107,6 +107,33 @@ body {
     padding-top: 150px;
 }
 
+.sorting {
+    margin-bottom: 40px;
+}
+
+.sorting__title {
+    color: #fff;
+    margin-right: 20px;
+}
+
+.sorting__btn {
+    padding: 10px 15px;
+    background-color: transparent;
+    border-radius: 3px;
+    border: 1px solid #fff;
+    color: #fff;
+    margin: 0 5px;
+    font-size: 15px;
+    outline: none;
+    cursor: pointer;
+}
+
+.sorting__btn.active {
+    background-color: #fff;
+    color: #555;
+}
+
+
 .author {
     /* margin-top: 40px; */
     width: 100%;
@@ -489,6 +516,13 @@ body {
 
 
 @media only screen and (max-width: 600px) {
+    .sorting {
+        text-align: center;
+        margin-top: 20px;
+    }
+    .sorting__title {
+        display: none;
+    }
     .header {
         margin-bottom: 0;
     }

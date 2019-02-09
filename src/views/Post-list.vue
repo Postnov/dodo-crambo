@@ -1,13 +1,19 @@
 <template>
 
    <div>
+        <div class="sorting">
+            <button class="sorting__btn" :class="{'active': filterName == 'createdAt'}" @click="changeFilter('createdAt', 'desc')">новые</button>
+            <button class="sorting__btn" :class="{'active': filterName == 'rating'}" @click="changeFilter('rating', 'desc')">популярные</button>
+        </div>
+
+
         <masonry
             ref="masonry"
             class="post-list"
             :cols="{default: 3, 1000: 2, 700: 1}"
             :gutter="{default: '20px', 700: '15px'}"
         >
-            <post-component v-for="post in posts.slice(0, postsToShow)" :key="post.id"  :post="post" v-on:incrate="updateInc" ></post-component>
+            <post-component v-for="post in orderedPosts " :key="post.id"  :post="post" v-on:incrate="updateInc" ></post-component>
         </masonry>
 
         <!-- <button v-if="postsToShow < posts.length" @click="incPostViews(9)">Показать еще</button> -->
@@ -18,9 +24,8 @@
 </template>
 
 <script>
-import { firebase } from '../main'
+import { firebase, OrderBy } from '../main'
 import PostComponent from '@/views/Post-component'
-
 
 export default {
     name: 'post-list',
@@ -28,6 +33,8 @@ export default {
         return {
             posts: [],
             postsToShow: 9,
+            filterName: 'createdAt',
+            filterType: 'desc'
         }
     },
     firestore() {
@@ -36,6 +43,10 @@ export default {
         }
     },
     methods: {
+        changeFilter(name, type) {
+            this.filterName = name;
+            this.filterType = type;
+        },
         handleScroll () {
             var masonryHeight = this.$refs.masonry.$el.clientHeight + 150,
                 offetHeight = window.innerHeight + window.scrollY;
@@ -54,6 +65,12 @@ export default {
             firebase.firestore().collection('data').doc('rhymes').collection('published').doc(id).set({
                 rating: rating
             }, {merge: true})
+        }
+    },
+    computed: {
+        orderedPosts: function () {
+            var filtered = OrderBy(this.posts, [this.filterName], [this.filterType]);
+            return filtered.slice(0, this.postsToShow)
         }
     },
     components: {

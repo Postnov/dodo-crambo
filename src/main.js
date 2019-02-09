@@ -9,6 +9,7 @@ import firebase from 'firebase/app'
 import 'firebase/firestore'
 import VueMasonry from 'vue-masonry-css'
 import Swal from 'sweetalert2'
+import OrderBy from 'lodash.orderby'
 
 // require styles
 import 'swiper/dist/css/swiper.css';
@@ -33,4 +34,4 @@ new Vue({
 
 
 
-export {firebase, VueMasonry, Swal}
+export {firebase, VueMasonry, Swal, OrderBy}
