@@ -22,7 +22,7 @@
             :cols="{default: 3, 1000: 2, 700: 1}"
             :gutter="{default: '20px', 700: '15px'}"
         >
-            <post-component v-for="post in orderedPosts" :key="post.id"  :post="post" v-on:incrate="updateInc" ></post-component>
+            <post-component v-for="post in orderedPosts" :key="post.id" :post="post" :index="posts.indexOf(post, 0)" v-on:incrate="updateInc" ></post-component>
         </masonry>
 
         <div v-if="!orderedPosts.length" class="post-not-found">Рифмы не найдены, попробуйте изменить поисковой запрос</div>

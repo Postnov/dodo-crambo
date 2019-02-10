@@ -41,18 +41,16 @@
 
     export default {
         name: 'post-component',
-        props: ['post', 'type', 'index'],
+        props: ['post', 'type', 'posts'],
         data() {
             return {
                 rating: this.post.rating,
                 id: this.post.id,
-                urlShare: 'https://dodo-crambo.ru/?indexPost=' + this.index
+                urlShare: 'https://dodo-crambo.ru/?idPost=' + this.post.id,
             }
         },
         methods: {},
-        mounted() {
-            console.log(this.urlShare)
-        },
+
 
     }
 </script>

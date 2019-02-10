@@ -12,8 +12,8 @@
             class="post-slider"
             >
             <swiper :options="swiperOption" ref="mySwiper" >
-                <swiper-slide v-for="post in posts.slice(0, postsToShow)" :key="post.id" >
-                    <post-component class="post-slide" :post="post" :type="'slide'" :index="posts.indexOf(post, 0)" v-on:incrate="updateInc"></post-component>
+                <swiper-slide v-for="post in posts.slice(0, postsToShow)"  :key="post.id" >
+                    <post-component class="post-slide" :post="post" :type="'slide'" :posts="posts" v-on:incrate="updateInc"></post-component>
                 </swiper-slide>
 
             </swiper>
@@ -144,23 +144,33 @@ var Posts = {
         }
     },
     mounted() {
-        var url = window.location.href,
-            beginPos = url.indexOf('indexPost=') + 10,
-            endPos = url.indexOf('#/'),
-            id = +url.slice(beginPos, endPos);
 
-        if (id) {
-            this.postsToShow = id + 6;
-
-            setTimeout(() =>  {
-                this.$refs.mySwiper.swiper.slideTo(id, 0);
-            }, 100)
-        }
 
     },
     created() {
+       var url = window.location.href,
+            beginPos = url.indexOf('idPost=') + 7,
+            endPos = url.indexOf('#/'),
+            id = url.slice(beginPos, endPos);
 
+        if (id) {
+            var self = this;
 
+            setTimeout(() => {
+                this.posts.forEach((post, i, arr) => {
+                    if (post.id == id) {
+
+                        var index = arr.indexOf(post, 0);
+                        this.postsToShow = index + 10;
+
+                        setTimeout(() => {
+                            self.$refs.mySwiper.swiper.slideTo(index, 0);
+                        }, 100)
+
+                    }
+                });
+            }, 2000)
+        }
 
 
         var _this = this;
