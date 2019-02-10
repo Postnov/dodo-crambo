@@ -10,7 +10,7 @@
 
 
             <div class="search-block">
-                <input type="text" class="search" v-model="searchQuery" placeholder="Поиск...">
+                <input type="text" class="search" @input="searchQuery = $event.target.value" v-model="searchQuery" placeholder="Поиск...">
                 <svg @click="searchQuery = ''" class="search-cross" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M23.954 21.03l-9.184-9.095 9.092-9.174-2.832-2.807-9.09 9.179-9.176-9.088-2.81 2.81 9.186 9.105-9.095 9.184 2.81 2.81 9.112-9.192 9.18 9.1z"/></svg>
             </div>
 
