@@ -10,6 +10,7 @@ import 'firebase/firestore'
 import VueMasonry from 'vue-masonry-css'
 import Swal from 'sweetalert2'
 import OrderBy from 'lodash.orderby'
+import SocialSharing from 'vue-social-sharing';
 
 // require styles
 import 'swiper/dist/css/swiper.css';
@@ -18,6 +19,7 @@ import '@/assets/main.css';
 
 Vue.use(VueFire)
 Vue.use(VueMasonry)
+Vue.use(SocialSharing);
 
 firebase.initializeApp(firebaseConfig)
 

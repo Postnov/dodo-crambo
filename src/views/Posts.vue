@@ -13,7 +13,7 @@
             >
             <swiper :options="swiperOption" ref="mySwiper" >
                 <swiper-slide v-for="post in posts.slice(0, postsToShow)" :key="post.id" >
-                    <post-component class="post-slide" :post="post" :type="'slide'" v-on:incrate="updateInc"></post-component>
+                    <post-component class="post-slide" :post="post" :type="'slide'" :index="posts.indexOf(post, 0)" v-on:incrate="updateInc"></post-component>
                 </swiper-slide>
 
             </swiper>
@@ -34,6 +34,7 @@ import { swiper, swiperSlide } from 'vue-awesome-swiper'
 import { firebase } from '../main'
 import PostComponent from '@/views/Post-component.vue';
 import { setTimeout } from 'timers';
+import { log } from 'util';
 
 
 var Posts = {
@@ -143,9 +144,25 @@ var Posts = {
         }
     },
     mounted() {
+        var url = window.location.href,
+            beginPos = url.indexOf('indexPost=') + 10,
+            endPos = url.indexOf('#/'),
+            id = +url.slice(beginPos, endPos);
+
+        if (id) {
+            this.postsToShow = id + 6;
+
+            setTimeout(() =>  {
+                this.$refs.mySwiper.swiper.slideTo(id, 0);
+            }, 100)
+        }
 
     },
     created() {
+
+
+
+
         var _this = this;
 
         var checkPosts = setInterval(function() {

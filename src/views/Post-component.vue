@@ -19,6 +19,18 @@
                     <span v-else>{{post.author}}</span>
                 </p>
             </div>
+                <social-sharing :url="this.urlShare"
+                            :title="post.name"
+                            :description="post.name"
+                            :quote="post.name"
+                            hashtags="dodo,dodo-pizza,postnov-daniil"
+                            twitter-user="dodo"
+                            media="https://pp.userapi.com/c845417/v845417533/19cd7b/X1_zaIM-wTU.jpg"
+                            inline-template>
+                    <div>
+                        <network network="vk" class="share-vk">Поделиться вк</network>
+                    </div>
+                </social-sharing>
         </footer>
     </div>
 </template>
@@ -29,14 +41,18 @@
 
     export default {
         name: 'post-component',
-        props: ['post', 'type'],
+        props: ['post', 'type', 'index'],
         data() {
             return {
                 rating: this.post.rating,
-                id: this.post.id
+                id: this.post.id,
+                urlShare: 'https://dodo-crambo.ru/?indexPost=' + this.index
             }
         },
         methods: {},
-        mounted() {}
+        mounted() {
+            console.log(this.urlShare)
+        },
+
     }
 </script>
