@@ -28,7 +28,7 @@
                             media="https://pp.userapi.com/c845417/v845417533/19cd7b/X1_zaIM-wTU.jpg"
                             inline-template>
                     <div>
-                        <network network="vk" class="share-vk">Поделиться вк</network>
+                        <network network="vk" class="share-vk">Поделиться</network>
                     </div>
                 </social-sharing>
         </footer>
