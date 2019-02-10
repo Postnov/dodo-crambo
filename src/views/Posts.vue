@@ -147,30 +147,33 @@ var Posts = {
 
 
     },
-    created() {
-       var url = window.location.href,
-            beginPos = url.indexOf('idPost=') + 7,
-            endPos = url.indexOf('#/'),
-            id = url.slice(beginPos, endPos);
+    watch: {
+        posts() {
+            if (this.posts.length > 0) {
+                var url = window.location.href,
+                    beginPos = url.indexOf('idPost=') + 7,
+                    endPos = url.indexOf('#/'),
+                    id = url.slice(beginPos, endPos);
 
-        if (id) {
-            var self = this;
+                if (id) {
+                    var self = this;
 
-            setTimeout(() => {
-                this.posts.forEach((post, i, arr) => {
-                    if (post.id == id) {
+                    this.posts.forEach((post, i, arr) => {
+                        if (post.id == id) {
 
-                        var index = arr.indexOf(post, 0);
-                        this.postsToShow = index + 10;
+                            var index = arr.indexOf(post, 0);
+                            this.postsToShow = index + 10;
 
-                        setTimeout(() => {
-                            self.$refs.mySwiper.swiper.slideTo(index, 0);
-                        }, 100)
-
-                    }
-                });
-            }, 2000)
+                            setTimeout(() => {
+                                self.$refs.mySwiper.swiper.slideTo(index, 0);
+                            }, 100)
+                        }
+                    });
+                }
+            }
         }
+    },
+    created() {
 
 
         var _this = this;
